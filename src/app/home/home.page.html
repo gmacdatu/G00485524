@@ -33,5 +33,9 @@ Also form Week 9 Demo on Ionic Component Routing @ 7:00+ min -->
 
           <ion-card-content>
             {{ movie.overview }}
+            <p></p>
+             <!-- Add to Favourites button method from Week 10 Ionic Storage Angular Demo by Ger @ 10:30 mins -->
+            <ion-button (click)="addToFavourites(movie)" 
+                class="ion-margin-top">Add to Favourites</ion-button>
           </ion-card-content>
       </ion-card>

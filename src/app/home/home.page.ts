@@ -3,6 +3,7 @@ import { IonHeader, IonToolbar, IonTitle, IonCard, IonCardHeader, IonCardTitle, 
 import { MovieService } from '../services/movie.service';
 import { CommonModule } from '@angular/common'; // Insert Comment
 import { RouterLink } from '@angular/router';
+import { FavouritesData } from '../services/favourites-data';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,10 @@ export class HomePage implements OnInit {
   updatedBy: string = "";
   movies: any[] = [];
 
-  constructor(private movieService: MovieService) {
+  constructor(
+    private movieService: MovieService,
+    private favouritesData: FavouritesData
+  ) {
     console.log("constructor()");
   }
 
@@ -27,6 +31,11 @@ export class HomePage implements OnInit {
     this.loadTrendingMovies();
     console.log("ngOnInit()");
   } 
+//Week 10 Ionic Storage Angular Demo by Ger @ 10:30 mins async method used
+  async addToFavourites(movie: any) {
+    await this.favouritesData.set(movie.id, movie);
+    console.log(`Added movie with ID ${movie.id} to favourites.`);
+  }
 
   ionviewWillEnter() {
     console.log("ionViewWillEnter()");
@@ -55,13 +64,9 @@ loadTrendingMovies() {
       error: (error) => console.log("error", error),
       complete: () => console.log("complete")
     });
-
-
   }
-
    // from: https://ionicframework.com/docs/api/searchbar#searchbars-in-toolbars
     public filteredMovies: any[] = [];
-
 
     // from https://ionicframework.com/docs/api/searchbar#searchbars-in-toolbars
   handleInput(event: any) {
