@@ -12,6 +12,8 @@ import { CommonModule } from '@angular/common'; // Insert Comment
 })
 export class HomePage implements OnInit {
   studentNumber: string = 'G00485524';
+  title: string = "";
+  updatedBy: string = "";
   movies: any[] = [];
 
   constructor(private movieService: MovieService) {}
@@ -20,9 +22,15 @@ export class HomePage implements OnInit {
     this.loadTrendingMovies();
   } 
   
-  loadTrendingMovies() {
-    this.movieService.getTrending().subscribe((data) => {
-      this.movies = data.results;
+  //Code adapted from Week 7 Demo 1 HttpClient and Observables by GH
+loadTrendingMovies() {
+    this.movieService.getTrending().subscribe({
+      next: (data: any) => {
+        console.log(data);
+        this.movies = data.results; 
+      },
+      error: (error) => console.log("error", error),
+      complete: () => console.log("complete")
     });
   }
 }

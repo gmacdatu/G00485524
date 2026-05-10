@@ -1,20 +1,26 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      G00485524
     </ion-title>
   </ion-toolbar>
 </ion-header>
+<!--Creating injectable list of movies in home.page.html following Week 7 Demo 1 code by GH -->
+<h2>Today's Trending Movies</h2>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Card Title</ion-card-title>
+    <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+  </ion-card-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content>
+  <ion-card-content>
+    Here's a small text description for the card content. Nothing more, nothing less.
+  </ion-card-content>
+</ion-card>
+
+<ul>
+  <li *ngFor="let movie of movies">
+    {{ movie.backdrop_path }}, {{ movie.title }}, {{ movie.overview }},  
+  </li>
+</ul>
