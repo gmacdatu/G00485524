@@ -17,7 +17,7 @@ export class FavouritesData {
     return list;
   }
 
-  //Below line 10 to line 25 are from Week 10 Ionic Storage Demo and https://github.com/ionic-team/ionic-storage/blob/main/README.md
+  //Below line 21 to line 35 are from Week 10 Ionic Storage Demo and https://github.com/ionic-team/ionic-storage/blob/main/README.md
 
   constructor(private storage: Storage) {
     this.init();

@@ -70,7 +70,7 @@ loadTrendingMovies() {
       next: (data: any) => {
         console.log(data);
         this.movies = data.results; 
-        this.allMovies = [...this.movies];
+       // couldn't get this to work: this.allMovies = [...this.movies];
         this.filteredMovies = [...this.movies];
       },
       error: (error) => console.log("error", error),
@@ -88,13 +88,10 @@ loadTrendingMovies() {
   }
   searchMovies() {
   if (this.searchTerm && this.searchTerm.trim() !== '') {    
-    // Call search on the entire entire TMDB database, not just the trending movies
     this.movieService.getSearchMovies(this.searchTerm).subscribe((data: any) => {
       this.filteredMovies = data.results;
     });
-
   } else {
-    // 4. If search is cleared, reset to your default movie list
     this.filteredMovies = [...this.allMovies];
   
   }}
