@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonSearchbar, IonItem, IonList, IonLabel } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonSearchbar, IonItem, IonList, IonListHeader, IonLabel } from '@ionic/angular/standalone';
 import { MovieService } from '../services/movie.service';
 import { CommonModule } from '@angular/common'; // Insert Comment
 
@@ -16,12 +16,31 @@ export class HomePage implements OnInit {
   updatedBy: string = "";
   movies: any[] = [];
 
-  constructor(private movieService: MovieService) {}
+  constructor(private movieService: MovieService) {
+    console.log("constructor()");
+  }
 
   ngOnInit() {
     this.loadTrendingMovies();
+    console.log("ngOnInit()");
   } 
+
+  ionviewWillEnter() {
+    console.log("ionViewWillEnter()");
+  }
+
+  ionviewDidEnter() {
+    console.log("ionViewDidEnter()");
+  }
+
+ionViewWillLeave() {
+    console.log("ionViewWillLeave()");
+  }
   
+  ionViewDidLeave() {
+    console.log("ionViewDidLeave()");
+  }
+
   //Code adapted from Week 7 Demo 1 HttpClient and Observables by GH
 loadTrendingMovies() {
     this.movieService.getTrending().subscribe({

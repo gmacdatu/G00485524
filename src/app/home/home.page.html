@@ -6,15 +6,20 @@
   </ion-toolbar>
 </ion-header>
 <!--Creating injectable list of movies in home.page.html following Week 7 Demo 1 code by GH 
-Also form Week 9 Demo on Ionic Component Routing @ 7:00 min -->
+Also form Week 9 Demo on Ionic Component Routing @ 7:00+ min -->
 
 <ion-content [fullscreen]="true">
-  <h1>Today's Trending Movies</h1>
+  <ion-list-header>
+    <h1>Today's Trending Movies</h1>
+  </ion-list-header >
+
   <div class="container">
-<ul>
-  <li *ngFor="let movie of movies">
-    {{ movie.backdrop_path }}, {{ movie.title }}, {{ movie.overview }},  
-  </li>
-</ul>
+    <ion-list>
+      <ion-item *ngFor="let movie of movies">
+        <ion-label>
+          {{ movie.backdrop_path }}, {{ movie.title }}, {{ movie.overview }},
+        </ion-label>
+      </ion-item>
+    </ion-list>
   </div>
 </ion-content>
