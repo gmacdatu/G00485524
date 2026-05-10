@@ -3,6 +3,8 @@
     <ion-title>
       G00485524
     </ion-title>
+      <ion-searchbar show-clear-button="focus" value="Search Movies"></ion-searchbar>
+      <ion-button [routerLink]="[ '/favourites' ]">Favourites</ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -13,14 +15,15 @@ Also form Week 9 Demo on Ionic Component Routing @ 7:00+ min -->
   <div class="container">
     <ion-list-header>
       <ion-label>Video Games</ion-label>
-      <ion-button>See All</ion-button>
     </ion-list-header>
-    <ion-list>
-      <ion-item *ngFor="let movie of movies">
-        <ion-label>
-          {{ movie.backdrop_path }}, {{ movie.title }}, {{ movie.overview }},
-        </ion-label>
-      </ion-item>
-    </ion-list>
-  </div>
-</ion-content>
+
+      <ion-card *ngFor="let movie of movies">
+          <img alt="Movie Image" src="{{ movie.backdrop_path }}" />
+          <ion-card-header>
+            <ion-card-title>{{ movie.title }}</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            {{ movie.overview }}
+          </ion-card-content>
+      </ion-card>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonSearchbar, IonItem, IonList, IonListHeader, IonLabel, IonButton } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonContent, IonSearchbar, IonItem, IonList, IonListHeader, IonLabel, IonButton } from '@ionic/angular/standalone';
 import { MovieService } from '../services/movie.service';
 import { CommonModule } from '@angular/common'; // Insert Comment
 import { RouterLink } from '@angular/router';
@@ -9,9 +9,9 @@ import { RouterLink } from '@angular/router';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonSearchbar, IonList, IonItem, IonListHeader, IonLabel, IonButton, CommonModule, RouterLink],
+  imports: [IonHeader, IonToolbar, IonTitle, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonContent, IonSearchbar, IonList, IonItem, IonListHeader, IonLabel, IonButton, CommonModule, RouterLink],
 })
-export class HomePage implements OnInit {
+export class HomePage implements OnInit { // do I need implements?
   studentNumber: string = 'G00485524';
   title: string = "";
   updatedBy: string = "";
