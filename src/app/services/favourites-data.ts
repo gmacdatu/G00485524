@@ -6,7 +6,7 @@ import { Storage } from '@ionic/storage-angular';
 })
 export class FavouritesData {
 
-  //Below to line 22 is from Week 10 Ionnic Storage Demo and https://github.com/ionic-team/ionic-storage/blob/main/README.md
+  //Below line 10 to line 25 are from Week 10 Ionic Storage Demo and https://github.com/ionic-team/ionic-storage/blob/main/README.md
 
   constructor(private storage: Storage) {
     this.init();
@@ -18,5 +18,9 @@ export class FavouritesData {
 
   async set(key:string, value:any) {
     await this.storage.set(key, value);
+  }
+
+  async get(key: string) {
+    return await this.storage.get('name');
   }
 }

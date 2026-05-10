@@ -17,6 +17,7 @@ export class HomePage implements OnInit {
   title: string = "";
   updatedBy: string = "";
   movies: any[] = [];
+  nameToDisplay: any;
 
   constructor(
     private movieService: MovieService,
@@ -31,13 +32,18 @@ export class HomePage implements OnInit {
     this.loadTrendingMovies();
     console.log("ngOnInit()");
   } 
-//Week 10 Ionic Storage Angular Demo by Ger @ 10:30 mins async method used
+//From Week 10 Ionic Storage Angular Demo by Ger @ 10:30 mins async method used
   async addToFavourites(movie: any) {
     await this.favouritesData.set(movie.id, movie);
     console.log(`Added movie with ID ${movie.id} to favourites.`);
   }
 
   ionviewWillEnter() {
+    this.getNameFromStorage();
+  }
+
+  async getNameFromStorage() {
+    this.nameToDisplay = await this.favouritesData.get("name");
     console.log("ionViewWillEnter()");
   }
 
