@@ -16,4 +16,13 @@ export class MovieService {
   getTrending(): Observable<any> {
     return this.http.get(`${this.baseUrl}/trending/movie/day?api_key=${this.apiKey}`);
   }
+
+  getMovieDetails(movieId: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/movie/${movieId}?api_key=${this.apiKey}`);
+  }
+  
+  getPersonDetails(personId: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/person/${personId}?api_key=${this.apiKey}`);
+    
+  }
 }
