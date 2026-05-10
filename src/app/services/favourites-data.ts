@@ -8,7 +8,7 @@ export class FavouritesData {
 
   private _storage: Storage | null = null;
 
-  // method to get all favourite movies from ionic storage, used in favourites.page.ts
+  // Method to get all favourite movies from ionic storage, used in favourites.page.ts
   async getAllFavourites() {
     const list: any[] = [];
     await this._storage?.forEach((value) => {
