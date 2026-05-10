@@ -36,7 +36,7 @@ export class HomePage implements OnInit {
     console.log("ionViewDidEnter()");
   }
 
-ionViewWillLeave() {
+  ionViewWillLeave() {
     console.log("ionViewWillLeave()");
   }
   
@@ -50,9 +50,23 @@ loadTrendingMovies() {
       next: (data: any) => {
         console.log(data);
         this.movies = data.results; 
+        this.filteredMovies = [...this.movies];
       },
       error: (error) => console.log("error", error),
       complete: () => console.log("complete")
     });
+
+
+  }
+
+   // from: https://ionicframework.com/docs/api/searchbar#searchbars-in-toolbars
+    public filteredMovies: any[] = [];
+
+
+    // from https://ionicframework.com/docs/api/searchbar#searchbars-in-toolbars
+  handleInput(event: any) {
+    const query = event.target.value?.toLowerCase() || '';
+    this.filteredMovies = this.movies.filter((movie: any) => 
+      movie.title.toLowerCase().includes(query));
   }
 }

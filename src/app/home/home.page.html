@@ -7,23 +7,25 @@
     </ion-buttons>
   </ion-toolbar>
 
+  <!-- searchbar logic from: https://ionicframework.com/docs/api/searchbar#searchbars-in-toolbars also at line 23 -->
   <ion-toolbar>
-    <ion-searchbar placeholder="Search Movies"></ion-searchbar>
+    <ion-searchbar placeholder="Search Movies" (ionInput)="handleInput($event)"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
-
-<!--Creating injectable list of movies in home.page.html following Week 7 Demo 1 code by GH 
-Also form Week 9 Demo on Ionic Component Routing @ 7:00+ min -->
 
 <ion-content [fullscreen]="true">
   <div class="container">
     <ion-list-header>
-      <ion-label>Video Games</ion-label>
+      <ion-label>
+        <h1>Today's Trending Movies</h1>
+      </ion-label>
     </ion-list-header>
+      <ion-card *ngFor="let movie of filteredMovies"> 
 
-      <ion-card *ngFor="let movie of movies">
+<!--Creating injectable list of movies in home.page.html following Week 7 Demo 1 code by GH 
+Also form Week 9 Demo on Ionic Component Routing @ 7:00+ min -->
 
-        <!-- used API docs to find how to display movie image https://developer.themoviedb.org/docs/image-basics. -->
+<!-- used API docs to find how to display movie image https://developer.themoviedb.org/docs/image-basics. -->
           <img alt="Movie Image" src="https://image.tmdb.org/t/p/w500{{ movie.backdrop_path }}" />
           <ion-card-header>
             <ion-card-title>{{ movie.title }}</ion-card-title>
