@@ -17,10 +17,16 @@ export class MovieService {
     return this.http.get(`${this.baseUrl}/trending/movie/day?api_key=${this.apiKey}`);
   }
 
+  getSearchMovies(query: string): Observable<any> {
+    return this.http.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=${query}`);
+  }
+
   getMovieDetails(movieId: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/movie/${movieId}?api_key=${this.apiKey}`);
   }
-  
+  getMovieCredits(movieId: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/movie/${movieId}/credits?api_key=${this.apiKey}`);
+  }
   getPersonDetails(personId: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/person/${personId}?api_key=${this.apiKey}`);
     

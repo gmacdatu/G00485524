@@ -1,13 +1,36 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>person-details</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ person?.name }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">person-details</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding" *ngIf="person">
+  <div style="text-align: center; margin-bottom: 20px;">
+    <img [src]="'https://image.tmdb.org/t/p/w500' + person.profile_path" 
+         style="border-radius: 50%; width: 250px; height: 250px; object-fit: cover; border: 3px solid #ccc;" />
+  </div>
+
+  <h1>{{ person.name }}</h1>
+
+  <p><strong>Born:</strong> {{ person.birthday || 'N/A' }}</p>
+  <p *ngIf="person.deathday"><strong>Died:</strong> {{ person.deathday }}</p>
+  <p><strong>AKA:</strong> {{ person.also_known_as?.join(', ') || 'N/A' }}</p>
+
+  <h3>Biography</h3>
+  <p>{{ person.biography || 'No description available.' }}</p>
+
+  <hr/>
+
+  <h3>Other Movies</h3>
+  <ion-list>
+    <ion-item *ngFor="let m of movies.slice(0, 10)" [routerLink]="['/movie-details', m.id]">
+      <ion-label>
+        <h2>{{ m.title }}</h2>
+        <p>Role: {{ m.character }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

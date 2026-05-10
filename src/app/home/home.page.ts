@@ -4,6 +4,7 @@ import { MovieService } from '../services/movie.service';
 import { CommonModule } from '@angular/common'; // Insert Comment
 import { RouterLink } from '@angular/router';
 import { FavouritesData } from '../services/favourites-data';
+import { HttpOptions } from '@capacitor/core';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,11 @@ export class HomePage implements OnInit {
   title: string = "";
   updatedBy: string = "";
   movies: any[] = [];
+  allMovies: any[] = [];
   nameToDisplay: any;
+  searchTerm: string = "";
+  keyword: any;
+  router: any;
 
   constructor(
     private movieService: MovieService,
@@ -65,6 +70,7 @@ loadTrendingMovies() {
       next: (data: any) => {
         console.log(data);
         this.movies = data.results; 
+        this.allMovies = [...this.movies];
         this.filteredMovies = [...this.movies];
       },
       error: (error) => console.log("error", error),
@@ -80,4 +86,16 @@ loadTrendingMovies() {
     this.filteredMovies = this.movies.filter((movie: any) => 
       movie.title.toLowerCase().includes(query));
   }
+  searchMovies() {
+  if (this.searchTerm && this.searchTerm.trim() !== '') {    
+    // Call search on the entire entire TMDB database, not just the trending movies
+    this.movieService.getSearchMovies(this.searchTerm).subscribe((data: any) => {
+      this.filteredMovies = data.results;
+    });
+
+  } else {
+    // 4. If search is cleared, reset to your default movie list
+    this.filteredMovies = [...this.allMovies];
+  
+  }}
 }
