@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonSearchbar, IonItem, IonList, IonListHeader, IonLabel } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonSearchbar, IonItem, IonList, IonListHeader, IonLabel, IonButton } from '@ionic/angular/standalone';
 import { MovieService } from '../services/movie.service';
 import { CommonModule } from '@angular/common'; // Insert Comment
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonSearchbar, IonList, IonItem, IonLabel, CommonModule],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonSearchbar, IonList, IonItem, IonListHeader, IonLabel, IonButton, CommonModule, RouterLink],
 })
 export class HomePage implements OnInit {
   studentNumber: string = 'G00485524';
@@ -19,6 +20,8 @@ export class HomePage implements OnInit {
   constructor(private movieService: MovieService) {
     console.log("constructor()");
   }
+
+  //Ionic Components Life cycle Events from www.ionicframework.com/docs/angular/lifecycle-events.
 
   ngOnInit() {
     this.loadTrendingMovies();

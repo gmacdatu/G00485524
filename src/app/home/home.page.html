@@ -5,15 +5,16 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
+
 <!--Creating injectable list of movies in home.page.html following Week 7 Demo 1 code by GH 
 Also form Week 9 Demo on Ionic Component Routing @ 7:00+ min -->
 
 <ion-content [fullscreen]="true">
-  <ion-list-header>
-    <h1>Today's Trending Movies</h1>
-  </ion-list-header >
-
   <div class="container">
+    <ion-list-header>
+      <ion-label>Video Games</ion-label>
+      <ion-button>See All</ion-button>
+    </ion-list-header>
     <ion-list>
       <ion-item *ngFor="let movie of movies">
         <ion-label>
