@@ -1,15 +1,14 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>G00485524</ion-title>
-    
-<ion-buttons slot="end">
-  <ion-button [routerLink]="['/favourites']">
-    <ion-icon slot="start" name="heart"></ion-icon>
-    Favourites
-  </ion-button>
-</ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/favourites']">Favourites</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
 
   <!-- searchbar logic from: https://ionicframework.com/docs/api/searchbar#searchbars-in-toolbars also at line 23 -->
+
   <ion-toolbar>
     <ion-searchbar placeholder="Search Movies" (ionInput)="handleInput($event)"></ion-searchbar>
   </ion-toolbar>

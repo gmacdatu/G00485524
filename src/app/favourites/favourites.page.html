@@ -1,18 +1,26 @@
-<ion-header [translucent]="true">
+<!-- Copied from home.page.html -->
+
+<ion-header>
   <ion-toolbar>
-    <ion-title>favourites</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>My Favourites</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">favourites</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <!--routerLink from Week 9 Demo by GH on Ionic Component Routing @ 30 min -->
-  <div class="ion-padding">
-    <ion-button [routerLink]="[ '/home' ]">Home</ion-button>
+<ion-content class="ion-padding">
+  <div *ngIf="favouriteMovies.length === 0" class="ion-text-center">
+    <p>You haven't added any favourites yet!</p>
   </div>
+
+  <ion-card *ngFor="let movie of favouriteMovies">
+    <img [src]="'https://image.tmdb.org/t/p/w500' + movie.backdrop_path" />
+    <ion-card-header>
+      <ion-card-title>{{ movie.title }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{ movie.overview }}
+    </ion-card-content>
+  </ion-card>
 </ion-content>
